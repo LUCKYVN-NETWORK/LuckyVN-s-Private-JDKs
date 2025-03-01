@@ -24,16 +24,16 @@ RUN apt-get update -y \
          "linux/amd64")  ARCH=linux-amd64  ;; \
          "linux/arm64")  ARCH=linux-aarch64  ;; \
     esac \
-  && curl --retry 3 -Lfso /tmp/graalvm.tar.gz https://github.com/LUCKYVN-NETWORK/LuckyVN-s-Private-JDKs/raw/refs/heads/main/graalvm-ee-java17-linux-amd64-21.3.13.tar.gz \
-  && mkdir -p /opt/java/graalvm \
-  && cd /opt/java/graalvm \
-  && tar -xf /tmp/graalvm.tar.gz --strip-components=1 \
-  && export PATH="/opt/java/graalvm/bin:$PATH" \
+  && curl --retry 3 -Lfso /tmp/java17.tar.gz https://github.com/LUCKYVN-NETWORK/LuckyVN-s-Private-JDKs/raw/refs/heads/main/jdk-17.0.13_linux-x64_bin.tar.gz \
+  && mkdir -p /opt/java/java17oracle \
+  && cd /opt/java/java17 \
+  && tar -xf /tmp/java17.tar.gz --strip-components=1 \
+  && export PATH="/opt/java/java17/bin:$PATH" \
   && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /tmp/graalvm.tar.gz
+  && rm -rf /tmp/java17.tar.gz
 
-ENV JAVA_HOME=/opt/java/graalvm \
-    PATH="/opt/java/graalvm/bin:$PATH"
+ENV JAVA_HOME=/opt/java/java17oracle \
+    PATH="/opt/java/java17oracle/bin:$PATH"
 
 # Step 2 - add pterodactyl stuff
 RUN useradd -d /home/container -m container

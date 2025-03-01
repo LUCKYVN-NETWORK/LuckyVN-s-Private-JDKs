@@ -1,2 +1,0 @@
-*.gz filter=lfs diff=lfs merge=lfs -text
-graalvm-ee-java8-linux-amd64-21.3.12.tar.gz filter=lfs diff=lfs merge=lfs -text
