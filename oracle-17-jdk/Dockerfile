@@ -6,7 +6,6 @@
 FROM ubuntu:22.04
 
 ARG TARGETPLATFORM
-ARG GRAAL_VERSION=21.3.12
 ARG JAVA_VERSION=17
 
 LABEL       author="SunshroomChan" maintainer="viethoangluunguyen1974@gmail.com"
@@ -26,9 +25,9 @@ RUN apt-get update -y \
     esac \
   && curl --retry 3 -Lfso /tmp/java17.tar.gz https://github.com/LUCKYVN-NETWORK/LuckyVN-s-Private-JDKs/raw/refs/heads/main/jdk-17.0.13_linux-x64_bin.tar.gz \
   && mkdir -p /opt/java/java17oracle \
-  && cd /opt/java/java17 \
+  && cd /opt/java/java17oracle \
   && tar -xf /tmp/java17.tar.gz --strip-components=1 \
-  && export PATH="/opt/java/java17/bin:$PATH" \
+  && export PATH="/opt/java/java17oracle/bin:$PATH" \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/java17.tar.gz
 
